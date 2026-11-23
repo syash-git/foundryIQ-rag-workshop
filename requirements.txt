@@ -1,0 +1,4 @@
+azure-identity==1.27.0
+azure-search-documents==12.1.0b2
+azure-ai-projects>=2.3.0
+streamlit>=1.32
