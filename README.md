@@ -25,6 +25,19 @@ The scripts use `DefaultAzureCredential`. Azure CLI sign-in supplies a local dev
 
 The current blob script uses a storage connection string, not your CLI identity, to authorize blob reads. A managed-identity storage connection instead requires Storage Blob Data Reader for the Search identity. Role assignment requires an administrator with suitable IAM permissions; allow time for changes to propagate.
 
+### Verify Workshop Prerequisites With Copilot
+
+Use `/foundry-workshop-preflight <resource-group-name>` in GitHub Copilot, or ask
+it to verify workshop readiness for a resource group. The repository
+[preflight skill](.github/skills/foundry-workshop-preflight/SKILL.md) discovers
+resources and checks participant/service-identity permissions using read-only
+Azure queries. Sign in with Azure CLI first; no `.env` or application environment
+variables are needed. It uses the current subscription unless you supply one.
+If multiple resource combinations are possible, it asks which to verify.
+It checks the storage account and container, not blob contents, and excludes
+provisioning-administrator permissions. It reports checks it cannot prove as
+UNKNOWN rather than assuming access.
+
 ## Setup
 
 Run the following from the repository root in PowerShell. No Azure resources are provisioned by these setup commands.
